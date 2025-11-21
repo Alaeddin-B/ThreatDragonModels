@@ -267,12 +267,12 @@
                   "status": "Mitigated",
                   "severity": "High",
                   "type": "Spoofing",
-                  "description": "Ein Angreifer gibt sich als legitimer Benutzer aus. Da das OTT-System zuvor eine Eigenentwicklung war, könnte die Authentifizierungslogik fehlerhaft sein und Account-Takeover ermöglichen.\nCAPEC-151 (Identity Spoofing) | ATT&CK: T1078\n\nDREA Calculation: Damage: 8 | Repro: 7 | Exploit: 6 | Affected: 9 | (Average: 7.5)",
-                  "mitigation": "Implementierung von standardisierten, industrieerprobten Authentifizierungsprotokollen (OIDC/SAML) anstelle von Custom-Logik.\n\nCatalog: OWASP ASVS V2.1.1 (Verify that all authentication controls are enforced on the server side).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 3 | Affected: 3 | Final: 3.5 (Medium)",
+                  "description": "Ein Angreifer gibt sich als legitimer Benutzer aus. Da das OTT-System zuvor eine Eigenentwicklung war, könnte die Authentifizierungslogik fehlerhaft sein und Account-Takeover ermöglichen.\nCAPEC-151 (Identity Spoofing) | ATT&CK: T1078\n\nDREA Calculation: Damage: 8 | Repro: 7 | Exploit: 6 | Affected: 9 | DREA: 30",
+                  "mitigation": "Implementierung von standardisierten, industrieerprobten Authentifizierungsprotokollen (OIDC/SAML) anstelle von Custom-Logik.\n\nCatalog: OWASP ASVS V2.1.1 (Verify that all authentication controls are enforced on the server side).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 3 | Affected: 3 | DREA: 14",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 103,
-                  "score": "7.5"
+                  "score": "30"
                 },
                 {
                   "id": "bc079ab3-6107-40a1-b14f-dae85286ff8b",
@@ -280,21 +280,21 @@
                   "status": "Mitigated",
                   "severity": "High",
                   "type": "Information disclosure",
-                  "description": "App-Daten werden auf der SD-Karte gespeichert. SD-Karten sind auf älteren Android-Versionen global lesbar oder bei physischem Zugriff auslesbar.\nCAPEC-203 | ATT&CK: T1596\n\nDREA Calculation: Damage: 7 | Repro: 9 | Exploit: 8 | Affected: 8 | (Average: 8.0)",
-                  "mitigation": "Speicherung sensibler Daten im sicheren internen Speicher (Sandbox) des Geräts, nicht auf der externen SD-Karte. Nutzung des Android Keystore Systems.\n\nCatalog: OWASP MASVS - MSTG-STORAGE-1 (System credential storage facilities are used to store sensitive data).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 4 | Affected: 4 | Final: 4.0 (Medium)",
+                  "description": "App-Daten werden auf der SD-Karte gespeichert. SD-Karten sind auf älteren Android-Versionen global lesbar oder bei physischem Zugriff auslesbar.\nCAPEC-203 | ATT&CK: T1596\n\nDREA Calculation: Damage: 7 | Repro: 9 | Exploit: 8 | Affected: 8 | DREA: 32",
+                  "mitigation": "Speicherung sensibler Daten im sicheren internen Speicher (Sandbox) des Geräts, nicht auf der externen SD-Karte. Nutzung des Android Keystore Systems.\n\nCatalog: OWASP MASVS - MSTG-STORAGE-1 (System credential storage facilities are used to store sensitive data).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 4 | Affected: 4 | DREA: 16",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 106,
-                  "score": "8"
+                  "score": "32"
                 }
               ],
               "hasOpenThreats": false,
               "isWebApplication": null,
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 3,
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 2,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               },
@@ -421,12 +421,12 @@
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Statische symmetrische Schlüssel werden in unverschlüsselten Config-Files gespeichert. Ein Angreifer mit lokalem Serverzugriff kann diese manipulieren, um Verbindungen umzuleiten oder Security zu deaktivieren.\nCAPEC-203 (Manipulate Configuration) | ATT&CK: T1552\n\nDREA Calculation: Damage: 9 | Repro: 9 | Exploit: 9 | Affected: 9 | (Average: 9.0)",
-                  "mitigation": "Verschieben der Key-Materials in ein dediziertes Hardware Security Module (HSM) oder einen sicheren Key Vault. Verschlüsselung der Konfigurationsdateien \"at rest\".\n\nCatalog: MITRE D3FEND - D3-EKM (Encrypt Key Material).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 2 | Exploit: 2 | Affected: 2 | Final: 2.0 (Low)",
+                  "description": "Statische symmetrische Schlüssel werden in unverschlüsselten Config-Files gespeichert. Ein Angreifer mit lokalem Serverzugriff kann diese manipulieren, um Verbindungen umzuleiten oder Security zu deaktivieren.\nCAPEC-203 (Manipulate Configuration) | ATT&CK: T1552\n\nDREA Calculation: Damage: 9 | Repro: 9 | Exploit: 9 | Affected: 9 | DREA 36",
+                  "mitigation": "Verschieben der Key-Materials in ein dediziertes Hardware Security Module (HSM) oder einen sicheren Key Vault. Verschlüsselung der Konfigurationsdateien \"at rest\".\n\nCatalog: MITRE D3FEND - D3-EKM (Encrypt Key Material).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 2 | Exploit: 2 | Affected: 2 | DREA 8",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 104,
-                  "score": "9"
+                  "score": "36"
                 },
                 {
                   "id": "734d785d-39fc-4572-8b0d-4b55cae7f786",
@@ -434,12 +434,12 @@
                   "status": "Mitigated",
                   "severity": "High",
                   "type": "Denial of service",
-                  "description": "Der Service ist aus Kostengründen nicht redundant ausgelegt (Single Point of Failure). Ein Angreifer kann den Service fluten (Flooding) und Logins verhindern.\nCAPEC-125 (Flooding) | ATT&CK: T1498\n\nDREA Calculation: Damage: 6 | Repro: 8 | Exploit: 8 | Affected: 10 | (Average: 8.0)",
-                  "mitigation": "Implementierung von Load Balancing und Deployment von mindestens zwei Instanzen des Services (High Availability).\n\nCatalog: MITRE D3FEND - D3-LB (Load Balancing).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | Final: 3.0 (Low)",
+                  "description": "Der Service ist aus Kostengründen nicht redundant ausgelegt (Single Point of Failure). Ein Angreifer kann den Service fluten (Flooding) und Logins verhindern.\nCAPEC-125 (Flooding) | ATT&CK: T1498\n\nDREA Calculation: Damage: 6 | Repro: 8 | Exploit: 8 | Affected: 10 | DREA 32",
+                  "mitigation": "Implementierung von Load Balancing und Deployment von mindestens zwei Instanzen des Services (High Availability).\n\nCatalog: MITRE D3FEND - D3-LB (Load Balancing).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | DREA 12",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 107,
-                  "score": "8"
+                  "score": "32"
                 }
               ],
               "hasOpenThreats": false,
@@ -449,10 +449,10 @@
               "isPublicNetwork": false,
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 1,
+                "tampering": 2,
                 "repudiation": 0,
                 "informationDisclosure": 0,
-                "denialOfService": 1,
+                "denialOfService": 2,
                 "elevationOfPrivilege": 0
               }
             }
@@ -576,12 +576,12 @@
                   "status": "Mitigated",
                   "severity": "High",
                   "type": "Elevation of privilege",
-                  "description": "Wenn der statische symmetrische Schlüssel kompromittiert wird, kann ein Angreifer seine Privilegien ausweiten und den vertrauenswürdigen 2FA-Dienst imitieren.\nCAPEC-233 (Privilege Escalation) | ATT&CK: T1078\n\nDREA Calculation: Damage: 9 | Repro: 6 | Exploit: 6 | Affected: 9 | (Average: 7.5)",
-                  "mitigation": "Automatische Rotation der Schlüssel unter Verwendung von Standard-Krypto-Bibliotheken (z.B. TLS mit Perfect Forward Secrecy) statt statischer Keys.\n\nCatalog: OWASP ASVS V6.2.1 (Verify that keys are generated using cryptographically strong algorithms).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 3 | Exploit: 3 | Affected: 2 | Final: 2.5 (Low)",
+                  "description": "Wenn der statische symmetrische Schlüssel kompromittiert wird, kann ein Angreifer seine Privilegien ausweiten und den vertrauenswürdigen 2FA-Dienst imitieren.\nCAPEC-233 (Privilege Escalation) | ATT&CK: T1078\n\nDREA Calculation: Damage: 9 | Repro: 6 | Exploit: 6 | Affected: 9 | DREA 30",
+                  "mitigation": "Automatische Rotation der Schlüssel unter Verwendung von Standard-Krypto-Bibliotheken (z.B. TLS mit Perfect Forward Secrecy) statt statischer Keys.\n\nCatalog: OWASP ASVS V6.2.1 (Verify that keys are generated using cryptographically strong algorithms).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 3 | Exploit: 3 | Affected: 2 | DREA 10",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 108,
-                  "score": "7.5"
+                  "score": "30"
                 }
               ],
               "hasOpenThreats": false,
@@ -591,15 +591,11 @@
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 0,
-                "elevationOfPrivilege": 2
-              }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
+                "elevationOfPrivilege": 3
+              },
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null,
+              "isWebApplication": null
             }
           },
           {
@@ -1955,20 +1951,27 @@
                   "status": "Mitigated",
                   "severity": "Medium",
                   "type": "Repudiation",
-                  "description": "Logs werden in einer lokalen Datenbank gespeichert. Ein böswilliger Administrator könnte Zeilen löschen, um seine Aktionen abzustreiten (Repudiation).\nCAPEC-93 (Log Injection-Tampering-Forging) | ATT&CK: T1070\n\nDREA Calculation: Damage: 5 | Repro: 8 | Exploit: 7 | Affected: 5 | (Average: 6.25)",
-                  "mitigation": "Senden der Logs in Echtzeit an das neue SIEM System (Write Once, Read Many). Das SIEM agiert als externer Validator, den der lokale Admin nicht manipulieren kann.\n\nCatalog: OWASP ASVS V7.1.1 (Verify that the application does not allow logs to be deleted or modified).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | Final: 3.0 (Low)",
+                  "description": "Logs werden in einer lokalen Datenbank gespeichert. Ein böswilliger Administrator könnte Zeilen löschen, um seine Aktionen abzustreiten (Repudiation).\nCAPEC-93 (Log Injection-Tampering-Forging) | ATT&CK: T1070\n\nDREA Calculation: Damage: 5 | Repro: 8 | Exploit: 7 | Affected: 5 | DREA 25",
+                  "mitigation": "Senden der Logs in Echtzeit an das neue SIEM System (Write Once, Read Many). Das SIEM agiert als externer Validator, den der lokale Admin nicht manipulieren kann.\n\nCatalog: OWASP ASVS V7.1.1 (Verify that the application does not allow logs to be deleted or modified).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | DREA 12",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 105,
-                  "score": "6.25"
+                  "score": "25"
                 }
               ],
               "threatFrequency": {
                 "tampering": 0,
-                "repudiation": 1,
+                "repudiation": 2,
                 "informationDisclosure": 0,
                 "denialOfService": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
