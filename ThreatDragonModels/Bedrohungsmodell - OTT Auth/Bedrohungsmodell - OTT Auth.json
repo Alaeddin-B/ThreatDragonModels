@@ -419,8 +419,8 @@
                   "status": "Mitigated",
                   "severity": "Critical",
                   "type": "Tampering",
-                  "description": "Statische symmetrische Schlüssel werden in unverschlüsselten Config-Files gespeichert. Ein Angreifer mit lokalem Serverzugriff kann diese manipulieren, um Verbindungen umzuleiten oder Security zu deaktivieren.\nCAPEC-203 (Manipulate Configuration) | ATT&CK: T1552\n\nDREA Calculation: Damage: 9 | Repro: 9 | Exploit: 9 | Affected: 9 | DREA 36",
-                  "mitigation": "Verschieben der Key-Materials in ein dediziertes Hardware Security Module (HSM) oder einen sicheren Key Vault. Verschlüsselung der Konfigurationsdateien \"at rest\".\n\nCatalog: MITRE D3FEND - D3-EKM (Encrypt Key Material).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 2 | Exploit: 2 | Affected: 2 | DREA 8",
+                  "description": "Statische symmetrische Schlüssel werden in unverschlüsselten Config-Files gespeichert. Ein Angreifer mit lokalem Serverzugriff kann diese manipulieren, um Verbindungen umzuleiten oder Security zu deaktivieren.\nCAPEC-75: Manipulating Writeable Configuration Files: Generally these are manually edited files that are not in the preview of the system administrators, any ability on the attackers' behalf to modify these files, for example in a CVS repository, gives unauthorized access directly to the application, the same as authorized users. \nATT&CK: T1552.004: Adversaries may search for private key certificate files on compromised systems for insecurely stored credentials. Private cryptographic keys and certificates are used for authentication, encryption/decryption, and digital signatures.\n\nDREA Calculation: Damage: 9 | Repro: 9 | Exploit: 9 | Affected: 9 | DREA 36",
+                  "mitigation": "Verschieben der Key-Materials in ein dediziertes Hardware Security Module (HSM) oder einen sicheren Key Vault. Verschlüsselung der Konfigurationsdateien \"at rest\".\n\nCatalog: MITRE D3FEND - D3-FE: Encrypting a file using a cryptographic key.\n\nNew Risk Score (DREA): Damage: 2 | Repro: 2 | Exploit: 2 | Affected: 2 | DREA 8",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 104,
@@ -447,12 +447,21 @@
               "isPublicNetwork": false,
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 2,
+                "tampering": 3,
                 "repudiation": 0,
                 "informationDisclosure": 0,
                 "denialOfService": 2,
                 "elevationOfPrivilege": 0
-              }
+              },
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -1963,13 +1972,6 @@
                 "informationDisclosure": 0,
                 "denialOfService": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
