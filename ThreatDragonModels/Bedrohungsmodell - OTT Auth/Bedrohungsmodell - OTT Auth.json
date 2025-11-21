@@ -260,10 +260,46 @@
                   "new": false,
                   "number": 101,
                   "score": "28"
+                },
+                {
+                  "id": "30e0523c-4ac9-4f10-ac33-0644f5109b2e",
+                  "title": "Angreifer täuscht Identität vor durch schwachen Credential-Reset",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Spoofing",
+                  "description": "Ein Angreifer gibt sich als legitimer Benutzer aus. Da das OTT-System zuvor eine Eigenentwicklung war, könnte die Authentifizierungslogik fehlerhaft sein und Account-Takeover ermöglichen.\nCAPEC-151 (Identity Spoofing) | ATT&CK: T1078\n\nDREA Calculation: Damage: 8 | Repro: 7 | Exploit: 6 | Affected: 9 | (Average: 7.5)",
+                  "mitigation": "Implementierung von standardisierten, industrieerprobten Authentifizierungsprotokollen (OIDC/SAML) anstelle von Custom-Logik.\n\nCatalog: OWASP ASVS V2.1.1 (Verify that all authentication controls are enforced on the server side).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 3 | Affected: 3 | Final: 3.5 (Medium)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 103,
+                  "score": "7.5"
+                },
+                {
+                  "id": "bc079ab3-6107-40a1-b14f-dae85286ff8b",
+                  "title": "Verlust sensibler Daten durch Speicherung auf SD-Karte",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Information disclosure",
+                  "description": "App-Daten werden auf der SD-Karte gespeichert. SD-Karten sind auf älteren Android-Versionen global lesbar oder bei physischem Zugriff auslesbar.\nCAPEC-203 | ATT&CK: T1596\n\nDREA Calculation: Damage: 7 | Repro: 9 | Exploit: 8 | Affected: 8 | (Average: 8.0)",
+                  "mitigation": "Speicherung sensibler Daten im sicheren internen Speicher (Sandbox) des Geräts, nicht auf der externen SD-Karte. Nutzung des Android Keystore Systems.\n\nCatalog: OWASP MASVS - MSTG-STORAGE-1 (System credential storage facilities are used to store sensitive data).\n\nNew Risk Score (DREA): Damage: 4 | Repro: 4 | Exploit: 4 | Affected: 4 | Final: 4.0 (Medium)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 106,
+                  "score": "8"
                 }
               ],
               "hasOpenThreats": false,
-              "isWebApplication": null
+              "isWebApplication": null,
+              "threatFrequency": {
+                "spoofing": 1,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 1,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 0
+              },
+              "handlesCardPayment": null,
+              "handlesGoodsOrServices": null
             }
           },
           {
@@ -378,12 +414,47 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "threats": [],
+              "threats": [
+                {
+                  "id": "3b2f0329-71a4-47a8-b33a-f97dcc69131f",
+                  "title": "Modifikation unverschlüsselter Konfigurationsdateien",
+                  "status": "Mitigated",
+                  "severity": "Critical",
+                  "type": "Tampering",
+                  "description": "Statische symmetrische Schlüssel werden in unverschlüsselten Config-Files gespeichert. Ein Angreifer mit lokalem Serverzugriff kann diese manipulieren, um Verbindungen umzuleiten oder Security zu deaktivieren.\nCAPEC-203 (Manipulate Configuration) | ATT&CK: T1552\n\nDREA Calculation: Damage: 9 | Repro: 9 | Exploit: 9 | Affected: 9 | (Average: 9.0)",
+                  "mitigation": "Verschieben der Key-Materials in ein dediziertes Hardware Security Module (HSM) oder einen sicheren Key Vault. Verschlüsselung der Konfigurationsdateien \"at rest\".\n\nCatalog: MITRE D3FEND - D3-EKM (Encrypt Key Material).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 2 | Exploit: 2 | Affected: 2 | Final: 2.0 (Low)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 104,
+                  "score": "9"
+                },
+                {
+                  "id": "734d785d-39fc-4572-8b0d-4b55cae7f786",
+                  "title": "Serviceausfall durch fehlende Redundanz",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Denial of service",
+                  "description": "Der Service ist aus Kostengründen nicht redundant ausgelegt (Single Point of Failure). Ein Angreifer kann den Service fluten (Flooding) und Logins verhindern.\nCAPEC-125 (Flooding) | ATT&CK: T1498\n\nDREA Calculation: Damage: 6 | Repro: 8 | Exploit: 8 | Affected: 10 | (Average: 8.0)",
+                  "mitigation": "Implementierung von Load Balancing und Deployment von mindestens zwei Instanzen des Services (High Availability).\n\nCatalog: MITRE D3FEND - D3-LB (Load Balancing).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | Final: 3.0 (Low)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 107,
+                  "score": "8"
+                }
+              ],
               "hasOpenThreats": false,
               "isBidirectional": false,
               "protocol": "",
               "isEncrypted": false,
-              "isPublicNetwork": false
+              "isPublicNetwork": false,
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 1,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 1,
+                "elevationOfPrivilege": 0
+              }
             }
           },
           {
@@ -498,8 +569,37 @@
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "threats": [],
-              "hasOpenThreats": false
+              "threats": [
+                {
+                  "id": "fd30a7ef-3d81-4a4a-80d0-dd7c297f3ec8",
+                  "title": "Rechteausweitung durch Kompromittierung statischer Schlüssel",
+                  "status": "Mitigated",
+                  "severity": "High",
+                  "type": "Elevation of privilege",
+                  "description": "Wenn der statische symmetrische Schlüssel kompromittiert wird, kann ein Angreifer seine Privilegien ausweiten und den vertrauenswürdigen 2FA-Dienst imitieren.\nCAPEC-233 (Privilege Escalation) | ATT&CK: T1078\n\nDREA Calculation: Damage: 9 | Repro: 6 | Exploit: 6 | Affected: 9 | (Average: 7.5)",
+                  "mitigation": "Automatische Rotation der Schlüssel unter Verwendung von Standard-Krypto-Bibliotheken (z.B. TLS mit Perfect Forward Secrecy) statt statischer Keys.\n\nCatalog: OWASP ASVS V6.2.1 (Verify that keys are generated using cryptographically strong algorithms).\n\nNew Risk Score (DREA): Damage: 2 | Repro: 3 | Exploit: 3 | Affected: 2 | Final: 2.5 (Low)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 108,
+                  "score": "7.5"
+                }
+              ],
+              "hasOpenThreats": false,
+              "threatFrequency": {
+                "spoofing": 0,
+                "tampering": 0,
+                "repudiation": 0,
+                "informationDisclosure": 0,
+                "denialOfService": 0,
+                "elevationOfPrivilege": 2
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -1848,7 +1948,27 @@
               "isEncrypted": true,
               "isSigned": true,
               "hasOpenThreats": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "ae834f65-b688-412c-af06-fd2a6cfc9ba2",
+                  "title": "Admin löscht Logs um Aktivität zu verbergen",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Repudiation",
+                  "description": "Logs werden in einer lokalen Datenbank gespeichert. Ein böswilliger Administrator könnte Zeilen löschen, um seine Aktionen abzustreiten (Repudiation).\nCAPEC-93 (Log Injection-Tampering-Forging) | ATT&CK: T1070\n\nDREA Calculation: Damage: 5 | Repro: 8 | Exploit: 7 | Affected: 5 | (Average: 6.25)",
+                  "mitigation": "Senden der Logs in Echtzeit an das neue SIEM System (Write Once, Read Many). Das SIEM agiert als externer Validator, den der lokale Admin nicht manipulieren kann.\n\nCatalog: OWASP ASVS V7.1.1 (Verify that the application does not allow logs to be deleted or modified).\n\nNew Risk Score (DREA): Damage: 3 | Repro: 3 | Exploit: 3 | Affected: 3 | Final: 3.0 (Low)",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 105,
+                  "score": "6.25"
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 0,
+                "repudiation": 1,
+                "informationDisclosure": 0,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -2119,6 +2239,7 @@
             },
             "visible": true,
             "shape": "actor",
+            "zIndex": 14,
             "ports": {
               "groups": {
                 "top": {
@@ -2202,7 +2323,6 @@
               ]
             },
             "id": "92dcd217-c338-4394-b88c-f1b77fc388ca",
-            "zIndex": 14,
             "data": {
               "type": "tm.Actor",
               "name": "Management",
@@ -2236,6 +2356,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 15,
             "ports": {
               "groups": {
                 "top": {
@@ -2319,7 +2440,6 @@
               ]
             },
             "id": "e03b11c9-a598-4398-9fd3-26e81c1216c6",
-            "zIndex": 15,
             "data": {
               "type": "tm.Process",
               "name": "Allsecure Mobile \nPhone OTT Service",
@@ -2356,6 +2476,7 @@
             },
             "visible": true,
             "shape": "process",
+            "zIndex": 16,
             "ports": {
               "groups": {
                 "top": {
@@ -2439,7 +2560,6 @@
               ]
             },
             "id": "fff03353-bf7e-4ae5-8539-ccb9609a1f7c",
-            "zIndex": 16,
             "data": {
               "type": "tm.Process",
               "name": "SIEM System",
@@ -2465,7 +2585,7 @@
     ],
     "reviewer": "Georg Neugebauer",
     "diagramTop": 10,
-    "threatTop": 102
+    "threatTop": 108
   },
   "version": "2.5.0"
 }
